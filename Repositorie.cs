@@ -11,6 +11,7 @@ namespace ToDoList {
 
 		public Repositorie() {
 			repos = new List<Tarefas>();
+			InitiateRepos();
 		}
 
 		public void InitiateRepos() {
@@ -27,8 +28,41 @@ namespace ToDoList {
 		}
 
 		public void AddTarefa(Tarefas tarefa) {
-			if(repos.Find(tarefa))
-			repos.Add(tarefa);
+			if (!repos.Contains(tarefa)) {
+				repos.Add(tarefa);
+				StreamWriter writer = File.AppendText(caminho);
+				writer.WriteLine(tarefa.Data + "\t" + tarefa.DiaDaSemana + "\t" + tarefa.Titulo + "\t" + tarefa.Descricao + "\t" + tarefa.DataDeEntrega);
+			}
+		}
+
+		public void RemoveTarefa(int index) {
+			repos.RemoveAt(index);
+			Update();
+        }
+
+		public void Update() {
+			InitiateRepos();
+			File.Delete(caminho);
+			StreamWriter writer = File.AppendText(caminho);
+			repos.ForEach((tarefa) => {
+				string[] data = new string[3];
+				data = tarefa.Data.Split("/");
+
+				string[] dataAtual = DateTime.Today.ToString().Split("/");
+				int mes = int.Parse(dataAtual[1]);
+
+				if (mes > int.Parse(data[1])) {
+					repos.Remove(tarefa);
+				}
+			});
+			repos.Sort();
+			for (int i = 0; i < repos.Count; i++) {
+				repos.ForEach((tarefa) => {
+					writer.WriteLine(tarefa.Data + "\t" + tarefa.DiaDaSemana + "\t" + tarefa.Titulo + "\t" + tarefa.Descricao + "\t" + tarefa.DataDeEntrega);
+				});
+			}
+			Console.Clear();
+			Console.WriteLine("Repositorio atualizado com sucesso!");
 		}
 	}
 }

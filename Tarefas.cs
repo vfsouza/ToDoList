@@ -8,20 +8,20 @@ using System.Globalization;
 namespace ToDoList {
 	public class Tarefas {
 		public string Data { get; set; }
-		public string DiaDaSemana { get; set; }
+		public Enum.DiasSemana DiaDaSemana { get; set; }
 		public string Titulo { get; set; }
 		public string Descricao { get; set; }
 		public string DataDeEntrega { get; set; }
 
 		public Tarefas() {
 			Data = "";
-			DiaDaSemana = "";
+			DiaDaSemana = Enum.DiasSemana.Segunda;
 			Titulo = "";
 			Descricao = "";
 			DataDeEntrega = "";
 		}
 
-		public Tarefas(string data, string diaDaSemana, string titulo, string descricao, string dataDeEntrega) {
+		public Tarefas(string data, Enum.DiasSemana diaDaSemana, string titulo, string descricao, string dataDeEntrega) {
 			Data = data;
 			DiaDaSemana = diaDaSemana;
 			Titulo = titulo;

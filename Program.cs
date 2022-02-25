@@ -3,7 +3,7 @@
 namespace ToDoList {
 	public class Program {
 		public static void Main(String[] args) {
-			Console.WriteLine(DateTime.Now);
+			Console.WriteLine(DateTime.Today);
 			/*int option = new int();
 			do {
 				Menu(out option);
