@@ -1,9 +1,18 @@
 ﻿using System;
+using ToDoList.BD;
+using ToDoList.BD.Entities;
 
 namespace ToDoList {
 	public class Program {
+
 		public static void Main(String[] args) {
-			Console.WriteLine(DateTime.Today);
+			Environment.LoadEnv();
+
+			Repositorie repos = Repositorie.GetInstance();
+
+			repos.Add(new Tarefas { TarefaName = "z", TarefaDescricao = "z", DiaEntrega = 1, MesEntrega = 1, Materia = Enum.Materias.ES });
+
+
 			/*int option = new int();
 			do {
 				Menu(out option);

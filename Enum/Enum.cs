@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ToDoList.Enum {
-	public enum DiasSemana {
+	public enum DiasDaSemana {
 		Domingo,
 		Segunda,
 		Terça,
@@ -13,5 +13,14 @@ namespace ToDoList.Enum {
 		Quinta,
 		Sexta,
 		Sabado,
+	}
+
+	public enum Materias {
+		AC2,
+		AED3,
+		CALC2,
+		ES,
+		LP,
+		TI3,
 	}
 }
